@@ -694,7 +694,7 @@
   <div class="popup" id="welcomePopup">
     <div class="popup-content animate__animated animate__zoomIn">
       <h2>Chào Mừng Bạn!</h2>
-      <p>Chúng tôi rất vui khi bạn ghé thăm trang web của chúng tôi. Hãy khám phá các tính năng tuyệt vời mà chúng tôi mang đến cho bạn.<br><br>Xin lưu ý rằng đây không phải web fake bill mà là web tạo QR thanh toán nhanh được dùng các API của VietQR và nó hoàn toàn hợp pháp. <br> <P style="color: red;">&copy; <strong>COPYRIGHT BY TỪ QUANG NAM</strong> </P></p>
+      <p>Chúng tôi rất vui khi bạn ghé thăm trang web của chúng tôi. Hãy khám phá các tính năng tuyệt vời mà chúng tôi mang đến cho bạn.<br><br>Xin lưu ý rằng đây không phải web fake bill mà là web tạo QR thanh toán nhanh được dùng các API của VietQR và nó hoàn toàn hợp pháp.</p>
       <button onclick="closePopup()" class="ripple">Bắt đầu ngay</button>
     </div>
   </div>
@@ -721,12 +721,12 @@
   
       <div class="form-group">
         <label for="amount"><i class="fas fa-money-bill-wave"></i> Số tiền (VNĐ)</label>
-        <input type="number" id="amount" placeholder="Nhập số tiền (không bắt buộc)">
+        <input type="number" id="amount" placeholder="Nhập số tiền" required>
       </div>
       
       <div class="form-group">
         <label for="description"><i class="fas fa-comment"></i> Nội dung</label>
-        <input type="text" id="description" placeholder="Nhập nội dung chuyển khoản">
+        <input type="text" id="description" placeholder="Nhập nội dung ( Tên Tele, Tên Chủ Tài Khoản, Số Tiền)" required>
       </div>
       
       <button type="submit" id="generateBtn" class="ripple pulse">
@@ -750,15 +750,14 @@
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
     const banks = [
-      { id: "ABB", name: "ABBANK", logo: "https://i.postimg.cc/7hmLngvc/ABBANK.png" },
       { id: "MBBANK", name: "MB Bank", logo: "https://i.postimg.cc/zGPJBz5C/MB-Bank.png" },
-      { id: "AGRIBANK", name: "Agribank", logo: "https://i.postimg.cc/B65btrmJ/Agribank-Plus.png" },
-      { id: "SACOMBANK", name: "Sacombank", logo: "https://i.postimg.cc/HW771Nwv/Sacombank-m-Banking.png" },
+      { id: "VIETBANK", name: "VietBank", logo: "https://api.vietqr.io/img/VIETBANK.png" },
       { id: "VIETCOMBANK", name: "Vietcombank", logo: "https://i.postimg.cc/bw4TpnG1/VCB-Digibank.png" },
-      { id: "VIETINBANK", name: "VietinBank", logo: "https://i.postimg.cc/Gm4QWKpc/Vietin-Bank-i-Pay.png" },
+      { id: "ACB", name: "ACB", logo: "https://api.vietqr.io/img/ACB.png" },
+      { id: "AGRIBANK", name: "Agribank", logo: "https://i.postimg.cc/B65btrmJ/Agribank-Plus.png" },
+      { id: "ABB", name: "ABBANK", logo: "https://i.postimg.cc/7hmLngvc/ABBANK.png" },
       { id: "CAKE", name: "CAKE Bank", logo: "https://api.vietqr.io/img/CAKE.png" },
       { id: "CIMB", name: "CIMB Bank", logo: "https://api.vietqr.io/img/CIMB.png" },
-      { id: "ACB", name: "ACB", logo: "https://api.vietqr.io/img/ACB.png" },
       { id: "BACABANK", name: "Bac A Bank", logo: "https://i.postimg.cc/63xTWWLH/BAC-A-BANK-Mobile-Banking.png" },
       { id: "BAOVIETBANK", name: "Bảo Việt Bank", logo: "https://i.postimg.cc/bwMs5HGf/IMG-4553.png" },
       { id: "BIDV", name: "BIDV", logo: "https://api.vietqr.io/img/BIDV.png" },
@@ -777,6 +776,7 @@
       { id: "PGBANK", name: "PG Bank", logo: "https://i.postimg.cc/Pfmr4nzH/PGBank-App.png" },
       { id: "PBVN", name: "Public Bank Vietnam", logo: "https://api.vietqr.io/img/PBVN.png" },
       { id: "PVCOMBANK", name: "PVcomBank", logo: "https://i.postimg.cc/VvBfLXLv/PVcom-Bank-m-Pos.png" },
+      { id: "SACOMBANK", name: "Sacombank", logo: "https://i.postimg.cc/HW771Nwv/Sacombank-m-Banking.png" },
       { id: "SAIGONBANK", name: "SaigonBank", logo: "https://i.postimg.cc/PJZLbLfn/SAIGONBANK-Smart-Banking.png" },
       { id: "SCB", name: "SCB", logo: "https://api.vietqr.io/img/SCB.png" },
       { id: "SEABANK", name: "SeABank", logo: "https://i.postimg.cc/ht0d37LS/Se-AMobile.png" },
@@ -787,7 +787,7 @@
       { id: "UNITEDOVERSEAS", name: "United Overseas Bank", logo: "https://api.vietqr.io/img/UOB.png" },
       { id: "VIB", name: "VIB", logo: "https://api.vietqr.io/img/VIB.png" },
       { id: "VIETABANK", name: "VietABank", logo: "https://i.postimg.cc/BQV5BFBR/Viet-ABank-Ez-Mobile.png" },
-      { id: "VIETBANK", name: "VietBank", logo: "https://api.vietqr.io/img/VIETBANK.png" },
+      { id: "VIETINBANK", name: "VietinBank", logo: "https://i.postimg.cc/Gm4QWKpc/Vietin-Bank-i-Pay.png" },
       { id: "VPBANK", name: "VPBank", logo: "https://i.postimg.cc/SK8GsK83/VPBank-NEO.png" },
       { id: "VRB", name: "VRB", logo: "https://api.vietqr.io/img/VRB.png" },
       { id: "WOORIBANK", name: "Woori Bank", logo: "https://i.postimg.cc/h40pThwq/Woori-WON-Vietnam.png" }
