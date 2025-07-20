@@ -13,151 +13,7 @@
       padding: 0; 
       box-sizing: border-box; 
     }
-/* Thêm các tính năng CSS3 mới vào phần :root */
-:root {
-  /* Thêm biến màu gradient mới */
-  --gradient-hover: linear-gradient(135deg, #8183f3, #b974f8);
-  --gradient-active: linear-gradient(135deg, #4f52d9, #8c3bd6);
-  
-  /* Thêm biến cho hiệu ứng 3D */
-  --transform-3d: perspective(1000px) rotateX(5deg) rotateY(-5deg);
-  
-  /* Thêm biến cho backdrop filter */
-  --backdrop-blur: blur(12px);
-  
-  /* Thêm biến cho transition */
-  --transition-3d: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* Nâng cấp container với hiệu ứng 3D */
-.container {
-  /* Thêm các thuộc tính mới */
-  transform-style: preserve-3d;
-  transition: var(--transition-3d);
-  will-change: transform;
-}
-
-.container:hover {
-  transform: var(--transform-3d);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-}
-
-/* Nâng cấp button với hiệu ứng 3D */
-button {
-  /* Thêm hiệu ứng chuyển đổi gradient khi hover */
-  background: var(--gradient);
-  transition: var(--transition-3d);
-  transform-style: preserve-3d;
-}
-
-button:hover {
-  background: var(--gradient-hover);
-  transform: translateY(-5px) scale(1.02);
-}
-
-button:active {
-  background: var(--gradient-active);
-  transform: translateY(0) scale(0.98);
-}
-
-/* Thêm hiệu ứng parallax cho background */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop') center/cover no-repeat;
-  z-index: -2;
-  transform: translateZ(-1px) scale(1.2);
-  opacity: 0.15;
-}
-
-/* Nâng cấp input với hiệu ứng focus mới */
-input:focus {
-  /* Thêm hiệu ứng neon glow */
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5),
-              0 0 15px 5px rgba(99, 102, 241, 0.2),
-              inset 0 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-/* Thêm hiệu ứng scroll snap */
-@media (min-width: 768px) {
-  .select-items {
-    scroll-snap-type: y mandatory;
-    max-height: 300px;
-    overflow-y: scroll;
-  }
-  
-  .select-items div {
-    scroll-snap-align: start;
-  }
-}
-
-/* Thêm filter cho hình ảnh QR code */
-#qrCode img {
-  filter: drop-shadow(0 5px 15px rgba(99, 102, 241, 0.4));
-  transition: filter 0.3s ease, transform 0.3s ease;
-}
-
-#qrCode img:hover {
-  filter: drop-shadow(0 8px 25px rgba(99, 102, 241, 0.6)) brightness(1.05);
-  transform: scale(1.03) rotate(1deg);
-}
-
-/* Thêm animation mới cho popup */
-@keyframes popupPulse {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: var(--shadow-xl);
-  }
-  50% {
-    transform: scale(1.02);
-    box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.5);
-  }
-}
-
-.popup-content {
-  animation: popupPulse 4s ease-in-out infinite;
-}
-
-/* Thêm mask-image cho hiệu ứng đặc biệt */
-.popup-content::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
-  mask-image: radial-gradient(circle at center, white 0%, transparent 70%);
-  pointer-events: none;
-}
-
-/* Thêm blend mode cho hiệu ứng hình ảnh */
-#qrCode::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--gradient);
-  mix-blend-mode: overlay;
-  opacity: 0.1;
-  z-index: 0;
-}
-
-/* Thêm clip-path cho hiệu ứng cắt hình */
-.floating {
-  clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
-  transition: clip-path 0.5s ease;
-}
-
-.floating:hover {
-  clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 95%, 0 80%);
-}
+    
     :root {
       --primary-color: #6366f1;
       --secondary-color: #a855f7;
@@ -174,6 +30,8 @@ input:focus {
       --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      --gradient-hover: linear-gradient(135deg, #8183f3, #b974f8);
+      --gradient-active: linear-gradient(135deg, #4f52d9, #8c3bd6);
     }
 
     body {
@@ -217,6 +75,13 @@ input:focus {
       animation: fadeInUp 0.6s forwards 0.3s;
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.1);
+      transform-style: preserve-3d;
+      transition: var(--transition);
+    }
+
+    .container:hover {
+      transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) translateY(0);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     }
 
     @keyframes fadeInUp {
@@ -406,12 +271,14 @@ input:focus {
     }
 
     button:hover {
-      transform: translateY(-3px);
+      background: var(--gradient-hover);
+      transform: translateY(-5px) scale(1.02);
       box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
     }
 
     button:active {
-      transform: translateY(0);
+      background: var(--gradient-active);
+      transform: translateY(0) scale(0.98);
     }
 
     button::after {
@@ -494,11 +361,82 @@ input:focus {
       transition: var(--transition);
       z-index: 1;
       border: 1px solid rgba(255, 255, 255, 0.1);
+      filter: drop-shadow(0 5px 15px rgba(99, 102, 241, 0.4));
     }
 
     #qrCode img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      filter: drop-shadow(0 8px 25px rgba(99, 102, 241, 0.6)) brightness(1.05);
+      transform: scale(1.03) rotate(1deg);
+    }
+
+    /* Thông tin thanh toán */
+    #qrInfo {
+      margin-top: 20px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+      padding: 15px;
+      text-align: left;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: none;
+    }
+
+    .info-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .info-label {
+      font-weight: 600;
+      color: var(--primary-color);
+      min-width: 100px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-value {
+      color: white;
+      word-break: break-all;
+    }
+
+    /* Nút tải xuống */
+    .download-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .download-btn {
+      padding: 12px 20px;
+      background: var(--gradient);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+    }
+
+    .download-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(99, 102, 241, 0.4);
+    }
+
+    .download-btn i {
+      font-size: 18px;
     }
 
     /* Loading spinner */
@@ -516,82 +454,6 @@ input:focus {
       transform: translate(-50%, -50%);
       z-index: 2;
     }
-    /* Thêm container queries (experimental) */
-@container (max-width: 600px) {
-  .form-group {
-    padding: 0.5rem;
-  }
-  
-  input, button {
-    font-size: 0.9rem;
-  }
-}
-
-/* Thêm hỗ trợ dark/light mode */
-@media (prefers-color-scheme: light) {
-  :root {
-    --light-color: #1f2a44;
-    --dark-color: #f8fafc;
-    --gray-color: #64748b;
-    --border-color: #cbd5e1;
-  }
-  
-  body {
-    background: #e2e8f0;
-  }
-  
-  .container {
-    background: rgba(248, 250, 252, 0.9);
-    color: var(--light-color);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  
-  input, .select-selected {
-    background: rgba(255, 255, 255, 0.8);
-    color: var(--light-color);
-    border-color: rgba(0, 0, 0, 0.1);
-  }
-}
-
-/* Thêm hỗ trợ cho thiết bị có hover */
-@media (hover: hover) {
-  button:hover {
-    transform: translateY(-5px) scale(1.02);
-  }
-}
-
-/* Thêm hỗ trợ cho thiết bị cảm ứng */
-@media (pointer: coarse) {
-  button {
-    padding: 1.2rem;
-    min-width: 120px;
-  }
-}
-/* Tối ưu hiệu suất với will-change */
-.container, button, input, #qrCode {
-  will-change: transform, opacity;
-}
-
-/* Sử dụng aspect-ratio cho QR code */
-#qrCode img {
-  aspect-ratio: 1/1;
-  object-fit: contain;
-}
-
-/* Sử dụng min/max/clamp cho kích thước linh hoạt */
-h1 {
-  font-size: clamp(1.5rem, 5vw, 2.5rem);
-}
-
-.container {
-  width: min(90%, 600px);
-  padding: clamp(1rem, 5vw, 2.5rem);
-}
-
-/* Sử dụng gap thay vì margin cho form */
-#qrForm {
-  gap: clamp(0.5rem, 2vw, 1.5rem);
-}
 
     @keyframes spin {
       to { transform: translate(-50%, -50%) rotate(360deg); }
@@ -797,6 +659,15 @@ h1 {
       input, .select-selected, button {
         padding: 14px;
       }
+      
+      .download-buttons {
+        flex-direction: column;
+      }
+      
+      .download-btn {
+        width: 100%;
+        justify-content: center;
+      }
     }
 
     /* Custom scrollbar */
@@ -818,91 +689,14 @@ h1 {
       background: var(--secondary-color);
     }
 
-    /* Tooltip */
-    .tooltip {
-      position: relative;
-      display: inline-block;
-      cursor: pointer;
-    }
-
-    .tooltip .tooltiptext {
-      visibility: hidden;
-      width: 200px;
-      background-color: var(--dark-color);
-      color: #fff;
+    /* Footer */
+    footer {
+      margin-top: 30px;
       text-align: center;
-      border-radius: 6px;
-      padding: 8px;
-      position: absolute;
-      z-index: 1;
-      bottom: 125%;
-      left: 50%;
-      transform: translateX(-50%);
-      opacity: 0;
-      transition: opacity 0.3s;
-      font-size: 12px;
-      box-shadow: var(--shadow-md);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .tooltip:hover .tooltiptext {
-      visibility: visible;
-      opacity: 1;
-    }
-
-    @keyframes borderRotate {
-      100% {
-        transform: rotate(1turn);
-      }
-    }
-
-    /* Water ripple effect */
-    .ripple {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .ripple:after {
-      content: "";
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
-      background-repeat: no-repeat;
-      background-position: 50%;
-      transform: scale(10, 10);
-      opacity: 0;
-      transition: transform .5s, opacity 1s;
-    }
-
-    .ripple:active:after {
-      transform: scale(0, 0);
-      opacity: .3;
-      transition: 0s;
-    }
-
-    /* Pulse animation */
-    .pulse {
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
-      }
-      70% {
-        transform: scale(1);
-        box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
-      }
-      100% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
-      }
+      color: var(--gray-color);
+      font-size: 14px;
+      padding: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
   </style>
 </head>
@@ -952,26 +746,62 @@ h1 {
       <button type="submit" id="generateBtn" class="ripple pulse">
         <span><i class="fas fa-qrcode"></i> Tạo QR</span>
       </button>
-
     </form>
   
     <div id="qrCode">
       <div class="spinner" id="spinner"></div>
       <div id="qrResult"></div>
     </div>
-          <footer>
-    <div style="text-align: center; padding: 1rem; font-size: 0.875rem; color: var(--text-color);">
-        &copy; 2023 Từ Quang Nam. All rights reserved.
+    
+    <!-- Thông tin thanh toán -->
+    <div id="qrInfo">
+      <div class="info-container">
+        <div class="info-item">
+          <span class="info-label"><i class="fas fa-credit-card"></i> STK:</span>
+          <span id="infoAccountNo" class="info-value"></span>
+        </div>
+        <div class="info-item">
+          <span class="info-label"><i class="fas fa-university"></i> Ngân hàng:</span>
+          <span id="infoBank" class="info-value"></span>
+        </div>
+        <div class="info-item">
+          <span class="info-label"><i class="fas fa-user"></i> Tên chủ TK:</span>
+          <span id="infoAccountName" class="info-value"></span>
+        </div>
+        <div class="info-item">
+          <span class="info-label"><i class="fas fa-money-bill-wave"></i> Số tiền:</span>
+          <span id="infoAmount" class="info-value"></span>
+        </div>
+        <div class="info-item">
+          <span class="info-label"><i class="fas fa-comment"></i> Nội dung:</span>
+          <span id="infoDescription" class="info-value"></span>
+        </div>
+      </div>
+      
+      <!-- Nút tải xuống -->
+      <div class="download-buttons">
+        <button id="downloadPNG" class="download-btn">
+          <i class="fas fa-download"></i> Tải PNG
+        </button>
+        <button id="downloadJPG" class="download-btn">
+          <i class="fas fa-download"></i> Tải JPG
+        </button>
+        <button id="copyLink" class="download-btn">
+          <i class="fas fa-copy"></i> Sao chép link
+        </button>
+      </div>
     </div>
-</footer>
+    
+    <footer>
+      <div>&copy; 2023 Từ Quang Nam. All rights reserved.</div>
+    </footer>
   </div>
   
   <!-- Toast Notification -->
   <div class="toast" id="toast">
     <span class="toast-icon"><i class="fas fa-check"></i></span>
-    <span class="toast-message">QR code đã được tạo thành công! <br></span>
+    <span class="toast-message">QR code đã được tạo thành công!</span>
   </div>
-  
   
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -1021,6 +851,7 @@ h1 {
     ];
 
     let selectedBank = null;
+    let currentQRUrl = '';
 
     // Initialize particles.js
     function initParticles() {
@@ -1207,6 +1038,40 @@ h1 {
       renderOptions();
     }
 
+    // Tải xuống QR code
+    function downloadQR(format) {
+      if (!currentQRUrl) {
+        showToast('Không có QR code để tải xuống!', 'error');
+        return;
+      }
+
+      const link = document.createElement('a');
+      link.href = currentQRUrl;
+      link.download = `QR_ThanhToan_${Date.now()}.${format}`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      showToast(`Đã tải xuống QR code (${format.toUpperCase()})!`);
+    }
+
+    // Sao chép link QR
+    function copyQRUrl() {
+      if (!currentQRUrl) {
+        showToast('Không có QR code để sao chép!', 'error');
+        return;
+      }
+
+      navigator.clipboard.writeText(currentQRUrl)
+        .then(() => {
+          showToast('Đã sao chép link QR code!');
+        })
+        .catch(err => {
+          showToast('Không thể sao chép link!', 'error');
+          console.error('Failed to copy: ', err);
+        });
+    }
+
     // Đóng select khi click ra ngoài
     document.addEventListener('click', function(e) {
       if (!e.target.closest('.custom-select')) {
@@ -1226,6 +1091,7 @@ h1 {
       const description = document.getElementById('description').value;
       
       const qrResult = document.getElementById('qrResult');
+      const qrInfo = document.getElementById('qrInfo');
       const spinner = document.getElementById('spinner');
       const generateBtn = document.getElementById('generateBtn');
       
@@ -1242,6 +1108,7 @@ h1 {
       
       // Hiển thị loading
       qrResult.innerHTML = '';
+      qrInfo.style.display = 'none';
       spinner.style.display = 'block';
       generateBtn.disabled = true;
       generateBtn.innerHTML = '<span><i class="fas fa-spinner fa-spin"></i> Đang tạo...</span>';
@@ -1250,9 +1117,18 @@ h1 {
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       // Tạo QR code
-      const qrUrl = `https://img.vietqr.io/image/${selectedBank.id}-${accountNo}-compact.png?amount=${amount}&addInfo=${encodeURIComponent(description)}&accountName=${encodeURIComponent(accountName)}`;
+      currentQRUrl = `https://img.vietqr.io/image/${selectedBank.id}-${accountNo}-compact.png?amount=${amount}&addInfo=${encodeURIComponent(description)}&accountName=${encodeURIComponent(accountName)}`;
       
-      qrResult.innerHTML = `<img src="${qrUrl}" alt="QR Code" class="floating">`;
+      qrResult.innerHTML = `<img src="${currentQRUrl}" alt="QR Code" class="floating">`;
+      
+      // Hiển thị thông tin thanh toán
+      document.getElementById('infoAccountNo').textContent = accountNo;
+      document.getElementById('infoBank').textContent = selectedBank.name;
+      document.getElementById('infoAccountName').textContent = accountName;
+      document.getElementById('infoAmount').textContent = amount ? `${parseInt(amount).toLocaleString('vi-VN')} VNĐ` : 'Không giới hạn';
+      document.getElementById('infoDescription').textContent = description;
+      
+      qrInfo.style.display = 'block';
       spinner.style.display = 'none';
       generateBtn.disabled = false;
       generateBtn.innerHTML = '<span><i class="fas fa-qrcode"></i> Tạo QR</span>';
@@ -1293,38 +1169,33 @@ h1 {
         });
       });
       
+      // Thêm sự kiện cho nút tải xuống
+      document.getElementById('downloadPNG').addEventListener('click', () => downloadQR('png'));
+      document.getElementById('downloadJPG').addEventListener('click', () => downloadQR('jpg'));
+      document.getElementById('copyLink').addEventListener('click', copyQRUrl);
+      
       // Thêm hiệu ứng khi trang load xong
       setTimeout(() => {
         document.querySelector('.container').classList.add('animate__animated', 'animate__fadeInUp');
       }, 800);
+      
+      // Thêm hiệu ứng parallax khi di chuột
+      document.addEventListener('mousemove', function(e) {
+        const container = document.querySelector('.container');
+        const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+        const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+        container.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+      });
+
+      // Reset transform khi không hover
+      document.querySelector('.container').addEventListener('mouseleave', function() {
+        this.style.transform = 'rotateY(0) rotateX(0)';
+        this.style.transition = 'all 0.5s ease';
+        setTimeout(() => {
+          this.style.transition = 'var(--transition)';
+        }, 500);
+      });
     });
-    // Thêm hiệu ứng parallax khi di chuột
-document.addEventListener('mousemove', function(e) {
-  const container = document.querySelector('.container');
-  const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-  const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
-  container.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-});
-
-// Reset transform khi không hover
-document.querySelector('.container').addEventListener('mouseleave', function() {
-  this.style.transform = 'rotateY(0) rotateX(0)';
-  this.style.transition = 'all 0.5s ease';
-  setTimeout(() => {
-    this.style.transition = 'var(--transition-3d)';
-  }, 500);
-});
-
-// Thêm hiệu ứng khi scroll
-window.addEventListener('scroll', function() {
-  const scrollY = window.scrollY || window.pageYOffset;
-  const container = document.querySelector('.container');
-  const opacity = 1 - Math.min(scrollY / 300, 0.3);
-  const scale = 1 - Math.min(scrollY / 2000, 0.1);
-  
-  container.style.opacity = opacity;
-  container.style.transform = `scale(${scale})`;
-});
   </script>
 </body>
 </html>
