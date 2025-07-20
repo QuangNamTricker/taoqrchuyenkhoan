@@ -13,7 +13,151 @@
       padding: 0; 
       box-sizing: border-box; 
     }
+/* Thêm các tính năng CSS3 mới vào phần :root */
+:root {
+  /* Thêm biến màu gradient mới */
+  --gradient-hover: linear-gradient(135deg, #8183f3, #b974f8);
+  --gradient-active: linear-gradient(135deg, #4f52d9, #8c3bd6);
+  
+  /* Thêm biến cho hiệu ứng 3D */
+  --transform-3d: perspective(1000px) rotateX(5deg) rotateY(-5deg);
+  
+  /* Thêm biến cho backdrop filter */
+  --backdrop-blur: blur(12px);
+  
+  /* Thêm biến cho transition */
+  --transition-3d: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
+/* Nâng cấp container với hiệu ứng 3D */
+.container {
+  /* Thêm các thuộc tính mới */
+  transform-style: preserve-3d;
+  transition: var(--transition-3d);
+  will-change: transform;
+}
+
+.container:hover {
+  transform: var(--transform-3d);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Nâng cấp button với hiệu ứng 3D */
+button {
+  /* Thêm hiệu ứng chuyển đổi gradient khi hover */
+  background: var(--gradient);
+  transition: var(--transition-3d);
+  transform-style: preserve-3d;
+}
+
+button:hover {
+  background: var(--gradient-hover);
+  transform: translateY(-5px) scale(1.02);
+}
+
+button:active {
+  background: var(--gradient-active);
+  transform: translateY(0) scale(0.98);
+}
+
+/* Thêm hiệu ứng parallax cho background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop') center/cover no-repeat;
+  z-index: -2;
+  transform: translateZ(-1px) scale(1.2);
+  opacity: 0.15;
+}
+
+/* Nâng cấp input với hiệu ứng focus mới */
+input:focus {
+  /* Thêm hiệu ứng neon glow */
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5),
+              0 0 15px 5px rgba(99, 102, 241, 0.2),
+              inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Thêm hiệu ứng scroll snap */
+@media (min-width: 768px) {
+  .select-items {
+    scroll-snap-type: y mandatory;
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  
+  .select-items div {
+    scroll-snap-align: start;
+  }
+}
+
+/* Thêm filter cho hình ảnh QR code */
+#qrCode img {
+  filter: drop-shadow(0 5px 15px rgba(99, 102, 241, 0.4));
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+#qrCode img:hover {
+  filter: drop-shadow(0 8px 25px rgba(99, 102, 241, 0.6)) brightness(1.05);
+  transform: scale(1.03) rotate(1deg);
+}
+
+/* Thêm animation mới cho popup */
+@keyframes popupPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: var(--shadow-xl);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.5);
+  }
+}
+
+.popup-content {
+  animation: popupPulse 4s ease-in-out infinite;
+}
+
+/* Thêm mask-image cho hiệu ứng đặc biệt */
+.popup-content::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+  mask-image: radial-gradient(circle at center, white 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Thêm blend mode cho hiệu ứng hình ảnh */
+#qrCode::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient);
+  mix-blend-mode: overlay;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+/* Thêm clip-path cho hiệu ứng cắt hình */
+.floating {
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+  transition: clip-path 0.5s ease;
+}
+
+.floating:hover {
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 95%, 0 80%);
+}
     :root {
       --primary-color: #6366f1;
       --secondary-color: #a855f7;
@@ -372,6 +516,82 @@
       transform: translate(-50%, -50%);
       z-index: 2;
     }
+    /* Thêm container queries (experimental) */
+@container (max-width: 600px) {
+  .form-group {
+    padding: 0.5rem;
+  }
+  
+  input, button {
+    font-size: 0.9rem;
+  }
+}
+
+/* Thêm hỗ trợ dark/light mode */
+@media (prefers-color-scheme: light) {
+  :root {
+    --light-color: #1f2a44;
+    --dark-color: #f8fafc;
+    --gray-color: #64748b;
+    --border-color: #cbd5e1;
+  }
+  
+  body {
+    background: #e2e8f0;
+  }
+  
+  .container {
+    background: rgba(248, 250, 252, 0.9);
+    color: var(--light-color);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  input, .select-selected {
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--light-color);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Thêm hỗ trợ cho thiết bị có hover */
+@media (hover: hover) {
+  button:hover {
+    transform: translateY(-5px) scale(1.02);
+  }
+}
+
+/* Thêm hỗ trợ cho thiết bị cảm ứng */
+@media (pointer: coarse) {
+  button {
+    padding: 1.2rem;
+    min-width: 120px;
+  }
+}
+/* Tối ưu hiệu suất với will-change */
+.container, button, input, #qrCode {
+  will-change: transform, opacity;
+}
+
+/* Sử dụng aspect-ratio cho QR code */
+#qrCode img {
+  aspect-ratio: 1/1;
+  object-fit: contain;
+}
+
+/* Sử dụng min/max/clamp cho kích thước linh hoạt */
+h1 {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+.container {
+  width: min(90%, 600px);
+  padding: clamp(1rem, 5vw, 2.5rem);
+}
+
+/* Sử dụng gap thay vì margin cho form */
+#qrForm {
+  gap: clamp(0.5rem, 2vw, 1.5rem);
+}
 
     @keyframes spin {
       to { transform: translate(-50%, -50%) rotate(360deg); }
@@ -1078,6 +1298,33 @@
         document.querySelector('.container').classList.add('animate__animated', 'animate__fadeInUp');
       }, 800);
     });
+    // Thêm hiệu ứng parallax khi di chuột
+document.addEventListener('mousemove', function(e) {
+  const container = document.querySelector('.container');
+  const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+  const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+  container.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+});
+
+// Reset transform khi không hover
+document.querySelector('.container').addEventListener('mouseleave', function() {
+  this.style.transform = 'rotateY(0) rotateX(0)';
+  this.style.transition = 'all 0.5s ease';
+  setTimeout(() => {
+    this.style.transition = 'var(--transition-3d)';
+  }, 500);
+});
+
+// Thêm hiệu ứng khi scroll
+window.addEventListener('scroll', function() {
+  const scrollY = window.scrollY || window.pageYOffset;
+  const container = document.querySelector('.container');
+  const opacity = 1 - Math.min(scrollY / 300, 0.3);
+  const scale = 1 - Math.min(scrollY / 2000, 0.1);
+  
+  container.style.opacity = opacity;
+  container.style.transform = `scale(${scale})`;
+});
   </script>
 </body>
 </html>
